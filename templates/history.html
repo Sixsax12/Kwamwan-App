@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <title>History</title>
+</head>
+
+<body>
+    <div class="container">
+      <div class="main">
+      <div class="content">
+        <div class="projectname">
+          <h1>Kwamwan Application</h1>
+      </div>
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Prediction</th>
+                  <th>Timestamp</th>
+                  <th>Download</th>
+                  <th>User Feedback</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for entry in history %}
+                  <tr>
+                    <td><img src="{{ entry.img_path }}" height="100px" width="100px"></td>
+                    <td>{{ entry.prediction }}</td>
+                    <td>{{ entry.timestamp }}</td>
+                    <td><a href="{{ url_for('download_file', filename=entry.filename) }}">Download File</a></td>
+                    <td>
+                        {% if 'user_feedback' in entry %}
+                          {{ entry.user_feedback }}
+                        {% else %}
+                          No feedback
+                        {% endif %}
+                      </td>
+                      <td>
+                        <form method="post" action="/history">
+                          <input type="hidden" name="entry_index" value="{{ loop.index0 }}">
+                          <div class="user-feedback-form">
+                            <div class="form-group">
+                              <label for="feedback_correct{{ loop.index }}">Correct:</label>
+                              <input type="radio" name="user_feedback" value="correct" id="feedback_correct{{ loop.index }}">
+                            </div>
+                            <div class="form-group">
+                              <label for="feedback_incorrect{{ loop.index }}">Incorrect:</label>
+                              <input type="radio" name="user_feedback" value="incorrect" id="feedback_incorrect{{ loop.index }}">
+                            </div>
+                            <button type="submit" class="btn btn-dark" id="submitFeedback" onclick="showAlert()">Submit</button>
+
+                          </div>
+                          <script>
+                            function showAlert() {
+                                alert("Thank you!");
+                            }
+                        </script>
+                        </form>
+                      </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <a href="/" class="btn btn-primary">Back</a>
+      </div>
+      </div>
+    </div>
+</body>
+</html>

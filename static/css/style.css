@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+
+
+
+*{
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body{
+    background-color: #e6eff6;
+}
+.container{
+    background-color: #fff;
+    margin: 1rem auto 1rem auto;
+    border-radius: 3rem;
+
+    box-shadow: 7px 13px 33px 7px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 7px 13px 33px 7px rgba(0,0,0,0.45);
+    -moz-box-shadow: 7px 13px 33px 7px rgba(0,0,0,0.45);
+}
+.projectname{
+    padding: 1.5rem;
+    background-color: aquamarine;
+    margin: 3rem;
+    text-align: center;
+    border-radius: 3rem;
+    
+    h1{
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 4rem;
+        margin: 0;
+    }
+}
+.content{
+    display: grid;
+    grid-template-areas: "contentpred content-text";
+    grid-template-columns: 1fr 1fr;
+    
+}
+.content-text{
+    padding: 0 2rem 2rem 2rem;
+}
+.contentpred{
+    padding: 0 2rem 2rem 2rem;
+}
+.content-text a{
+    margin-top: 3rem;
+}
+.container{
+    display: grid;
+    grid-template-areas: "projectname"
+                         "content";
+
+}
+.imgshow .wtmimg{
+    height: 260px;
+    width: 260px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.imgshow h4{
+    border-radius: 3rem;
+
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 1.5rem;
+}
+.info{
+    padding: 3rem;
+    font-size: 1rem;
+}
+.submitbtn {
+  align-items: center;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: 25rem;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 16px;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  margin-bottom: 6px;
+  width: 275px;
+  transition: 0.3s;
+
+}
+
+.submitbtn:hover {
+  color: #fa6400;
+  background-color: white;
+  border-color: #fa6400;
+  
+}
+.historybtn {
+    background-color: #fff;
+    text-decoration: none;
+    color: #fa6400;
+    border: solid #fa6400 1px;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px); ;
+    text-align: center;
+    border-radius: 25rem;
+    transition: 0.3s;
+  
+  }
+  
+  .historybtn:hover {
+    background-color: #fa6400;
+    color: white;
+    text-decoration: none;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .form-group button {
+      margin: 2rem;
+    }
+    .submitbtn{
+        width: 100px;
+    }
+  }
+  @media only screen and (max-width: 990px) {
+    .content{
+        display: grid;
+        grid-template-areas: "contentpred"
+                             "content-text";
+        grid-template-columns: 1fr;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .content{
+        display: grid;
+        grid-template-areas: "contentpred"
+                             "content-text";
+        grid-template-columns: 1fr;
+    }
+    .projectname h1{
+        font-size: 30px;
+    }
+    .submitbtn{
+        width: 100px;
+    }
+    .historybtn{
+        position: absolute;
+        margin-top: 32px;
+    }
+    
+}
+  @media only screen and (max-width: 375px) {
+    .content{
+        display: grid;
+        grid-template-areas: "contentpred"
+                             "content-text";
+        grid-template-columns: 1fr;
+    }
+    .projectname h1{
+        font-size: 30px;
+    }
+    .submitbtn{
+        width: 100px;
+    }
+    .historybtn{
+        position: absolute;
+        margin-top: 32px;
+    }
+
+
+}
